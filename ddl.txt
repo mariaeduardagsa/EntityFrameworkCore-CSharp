@@ -1,0 +1,68 @@
+﻿--sql
+CREATE Table Colaborador (
+ID INT PRIMARY KEY IDENTITY,
+Nome varchar(150) NOT NULL,
+Sexo varchar(20) NOT NULL,
+DataDeNascimento DATETIME NOT NULL,
+Cargo varchar(120) NOT NULL,
+Ativo BIT 
+);
+
+-- bit -> 1 true 0 false
+
+SELECT *
+FROM Colaborador
+
+SELECT *
+FROM Colaborador
+WHERE Sexo = 'Feminino'
+
+SELECT *
+FROM Colaborador
+WHERE Ativo = 1
+
+INSERT INTO Colaborador ( Nome, Sexo, DataDeNascimento, Cargo, Ativo) VALUES ('Carlos','Masculino', '30/05/1987', 'Limpeza', 1);
+
+DELETE 
+FROM Colaborador 
+WHERE ID = 2;
+
+INSERT INTO Colaborador ( Nome, Sexo, DataDeNascimento, Cargo, Ativo) VALUES ('Silvia','Feminino', '01/01/1995', 'Gerente Comercial', 1);
+
+INSERT INTO Colaborador ( Nome, Sexo, DataDeNascimento, Cargo, Ativo) VALUES ('Maria','Feminino', '25/11/1999', 'Desenvolvedora', 1);
+
+INSERT INTO Colaborador ( Nome, Sexo, DataDeNascimento, Cargo, Ativo) VALUES ('Fabio','Masculino', '06/09/1986', 'Gerente', 0);
+
+SELECT * FROM Colaborador
+UPDATE Colaborador
+SET Ativo='0'
+WHERE ID = 5
+
+SELECT * FROM Colaborador
+
+CREATE TABLE Status(
+ID INT PRIMARY KEY IDENTITY,
+Descricao varchar(200),
+Valores varchar(15),
+Status_ID INT FOREIGN KEY REFERENCES Colaborador(ID)
+
+);
+
+INSERT INTO Status (Descricao, Valores) VALUES ('CLT', 'Ativo')
+INSERT INTO Status (Descricao, Valores) VALUES ('CLT', 'Inativo')
+INSERT INTO Status (Descricao, Valores) VALUES ('CLT', 'Ativo')
+INSERT INTO Status (Descricao, Valores) VALUES ('CLT', 'Inativo')
+
+ALTER TABLE Colaborador DROP COLUMN Ativo;
+
+DELETE 
+FROM Status 
+WHERE Id = 2;
+
+SELECT * FROM Colaborador
+SELECT * FROM Status
+
+SELECT *
+FROM Colaborador AS C
+JOIN Status AS S ON C.ID = S.ID
+```
